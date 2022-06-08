@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        #details{
+            background-color: orange;
+           margin: auto;
+            gap: 10px;
+            border-radius: 10px;
+            width: 250px;
+            text-align: center;
+            box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+        }
+        h1{
+            text-align: center;
+        }
+        #sub{
+            margin-bottom: 10px;
+        }
+
+    </style>
+    <title>Document</title>
+
+</head>
+<body>
+    
+    <form id="details">
+        <h1>Signup page</h1>
+      <input id="email" type="text" placeholder="Enter email" /><br><br>
+      <input id="pass" type="password" placeholder="Enter password" /><br><br>
+      <input id="pass" type="password" placeholder="confirm password" /><br><br>
+      <input id="user" type="text" placeholder="Enter username" /><br><br>
+      <input type="submit" id="sub"/>
+    </form>
+</body>
+</html>
+<script>
+     document.querySelector("form").addEventListener("submit", signUpFun);
+
+var userData = JSON.parse(localStorage.getItem("userCreds"))||[]
+function signUpFun() {
+  event.preventDefault();
+  var email= document.querySelector("#email").value
+  var password= document.querySelector("#pass").value
+  var userName= document.querySelector("#user").value
+   
+  if(email===""||password==""||user==""){
+    alert("Enter all value")
+    return;
+  }
+  var userObj = {
+   email: document.querySelector("#email").value,
+   password: document.querySelector("#pass").value,
+   userName: document.querySelector("#user").value,
+  };
+  //console.log(userObj);
+  userData.push(userObj);
+  //console.log(userData)
+  localStorage.setItem("userCreds",JSON.stringify(userData))
+  window.location.reload();
+  alert("signup successfully")
+  window.location.href="login.html"
+
+}
+</script>
